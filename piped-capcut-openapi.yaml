@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
   title: CapCut Tutorial Search (via YouTube Data API)
   version: 1.0.0
@@ -43,13 +43,6 @@ paths:
             type: integer
             default: 1
           example: 1
-        - in: query
-          name: key
-          required: true
-          schema:
-            type: string
-          example: AIzaSyBk8fcnYTSdBWPzQ-iePGTtP2p9xxZP1NM
-          description: Your YouTube Data API key
       responses:
         '200':
           description: Successful video search
@@ -83,3 +76,13 @@ paths:
                                   properties:
                                     url:
                                       type: string
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: key
+
+security:
+  - ApiKeyAuth: []
