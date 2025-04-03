@@ -1,0 +1,39 @@
+openapi: 3.0.0
+info:
+  title: CapCut Video Search (via Piped)
+  version: 1.0.0
+  description: Uses the public Piped API to search YouTube for CapCut editing tutorials.
+
+servers:
+  - url: https://pipedapi.kavin.rocks
+
+paths:
+  /search:
+    get:
+      summary: Search YouTube videos
+      operationId: getCapCutTutorial
+      parameters:
+        - in: query
+          name: q
+          required: true
+          schema:
+            type: string
+          description: Search query (e.g., "capcut zoom effect tutorial")
+      responses:
+        '200':
+          description: Successful video search
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    url:
+                      type: string
+                    title:
+                      type: string
+                    uploaderName:
+                      type: string
+                    thumbnailUrl:
+                      type: string
