@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
-  title: CapCut Tutorial Search (via YouTube Data API)
+  title: CapCut YouTube Search
+  description: Search for CapCut editing tutorials using the YouTube Data API v3.
   version: 1.0.0
-  description: Searches YouTube for CapCut tutorials using YouTube Data API v3.
 
 servers:
   - url: https://www.googleapis.com
@@ -10,31 +10,31 @@ servers:
 paths:
   /youtube/v3/search:
     get:
-      summary: Search for CapCut-related videos on YouTube
       operationId: getCapCutTutorial
+      summary: Search YouTube for CapCut-related videos
       parameters:
-        - in: query
-          name: part
+        - name: part
+          in: query
           required: true
           schema:
             type: string
             enum: [snippet]
           example: snippet
-        - in: query
-          name: q
+        - name: q
+          in: query
           required: true
           schema:
             type: string
-          example: capcut 3d zoom tutorial
-        - in: query
-          name: type
+          example: capcut slow motion tutorial
+        - name: type
+          in: query
           required: true
           schema:
             type: string
             enum: [video]
           example: video
-        - in: query
-          name: maxResults
+        - name: maxResults
+          in: query
           required: false
           schema:
             type: integer
@@ -42,7 +42,7 @@ paths:
           example: 1
       responses:
         '200':
-          description: A list of matching YouTube videos
+          description: A successful response with YouTube search results
           content:
             application/json:
               schema:
